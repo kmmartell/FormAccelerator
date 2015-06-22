@@ -1,0 +1,93 @@
+
+html
+  head
+
+    title= 'Dashboard ' +pageTitle
+  
+    
+    each s in scripts
+      script(src=s)
+
+    
+
+    // Import the stylesheets
+    
+    link(rel='stylesheet', href='/plugins/bootstrap/css/bootstrap.min.css', type='text/css')
+    link(rel='stylesheet', href='/plugins/datatables/media/css/jquery.dataTables.css', type='text/css')
+    link(rel='stylesheet', href='/plugins/sweetalert/lib/sweet-alert.css', type='text/css')
+    link(rel='stylesheet', href='/css/style.css', type='text/css')
+  
+  
+
+  body
+    // Create body header
+    div#w3-header
+      div.banner
+        a(href='https://github.com/TravellersFeet/FormAccelerator') 
+          img(src='/images/github.png')
+          
+    nav#navbar-top.navbar.navbar-default
+      div.container-fluid
+        div.navbar-header
+          a.navbar-brand!='Dashboard - '+pageTitle
+        div#navbar.navbar-collapse.collapse
+          ul.nav.navbar-nav.navbar-left
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/allprojects') Home
+            li
+              a(href='/project/'+project_id) View Project
+            li
+              a Assign Roles 
+            li
+              a Help
+    div.container
+      div.row
+        div.col-md-3
+        div.col-md-6
+          br
+          br
+          h1!= pageTitle 
+          hr
+          h4 
+            span.glyphicon.glyphicon-plus
+            Add New Form
+          input.form-control(placeholder='Enter the name of your new form')
+          br
+          button.btn.btn-primary.save Add Form to Project
+          br
+          hr
+          h4
+            span.glyphicon.glyphicon-pencil
+            Modify Existing Forms
+          each form_name,form_id in forms
+            
+            a(href='/dashboard/'+project_id+'/form/'+form_id)!='Edit '+form_name
+            br
+        div.col-md-6
+
+      
+    nav.navbar.navbar-default.navbar-fixed-bottom.footer
+      div.container
+        p
+          b Created by Kayla Martell
+          br
+          a Built On Bluemix
+          img.small-logo(src='/images/Bluemix.png')
+          a Powered By Cloudant
+          img.small-logo(src='/images/cloudant_logo.png')
+
+
+                    
+
+                      
+                        
+
+
+
+
+
+  
+
+    
+ 

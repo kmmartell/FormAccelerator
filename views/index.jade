@@ -1,0 +1,47 @@
+doctype html
+html(lang="en")
+	head
+		title All Projects
+		link(rel='stylesheet', href='/plugins/bootstrap/css/bootstrap.min.css', type='text/css')
+		link(rel='stylesheet', href='/plugins/datatables/media/css/jquery.dataTables.css', type='text/css')
+		link(rel='stylesheet', href='/plugins/sweetalert/lib/sweet-alert.css', type='text/css')
+		link(rel='stylesheet', href='/css/style.css', type='text/css')
+
+		each s in scripts
+			script(src=s)
+
+	body
+		div#w3-header
+			div.banner
+				a(href='https://github.com/TravellersFeet/FormAccelerator') 
+					img(src='images/github.png')
+		div.container(style={'margin-top':'20px'})
+			div.row
+				div.col-md-2
+				div.col-md-8(style={'text-align':'center'})
+					h2 Find or Create Project
+					div.center-form.form
+						span.glyphicon.glyphicon-plus
+						a.p-name(href='/created/project') Create New Project
+						br
+						hr
+						each p in projects
+							a.p-name(href='/project/'+p._id)!= p.project_name
+							br
+
+
+				div.col-md-2
+
+	nav.navbar.navbar-default.navbar-fixed-bottom.footer
+		div.container
+			p
+				b The Form Accelerator : Created by Kayla Martell
+				br
+				a Built On Bluemix
+				img.small-logo(src='/images/Bluemix.png')
+				a Powered By Cloudant
+				img.small-logo(src='/images/cloudant_logo.png')
+
+
+
+

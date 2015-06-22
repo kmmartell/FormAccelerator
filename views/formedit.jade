@@ -1,0 +1,77 @@
+
+html
+  head
+
+    title= 'Dashboard ' +pageTitle
+    script.
+      form_id="#{form_id}";
+      parent_id="#{parent_id}";
+    
+    each s in scripts
+      script(src=s)
+
+    
+
+    // Import the stylesheets
+    
+    link(rel='stylesheet', href='/plugins/bootstrap/css/bootstrap.min.css', type='text/css')
+    link(rel='stylesheet', href='/plugins/datatables/media/css/jquery.dataTables.css', type='text/css')
+    link(rel='stylesheet', href='/plugins/sweetalert/lib/sweet-alert.css', type='text/css')
+    link(rel='stylesheet', href='/css/style.css', type='text/css')
+    link(rel='stylesheet', href='/plugins/formbuilder/vendor/css/vendor.css', type='text/css')
+    link(rel='stylesheet', href='/plugins/formbuilder/dist/formbuilder.css', type='text/css')
+  
+
+  body
+    // Create body header
+    div#w3-header
+      div.banner
+        a(href='https://github.com/TravellersFeet/FormAccelerator') 
+          img(src='images/github.png')
+          
+    nav#navbar-top.navbar.navbar-default
+      div.container-fluid
+        div.navbar-header
+          a.navbar-brand!='Dashboard - '+pageTitle
+        div#navbar.navbar-collapse.collapse
+          ul.nav.navbar-nav.navbar-left
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/allprojects') Home
+            li
+              a(href='/project/'+project_id) View Project
+            li
+              a(href='/dashboard/'+project_id) Manage Forms
+            li
+              a(style={'opacity':'0.5'}) Assign Roles
+            li
+              a Help
+    div.container-fluid
+      div.row
+        div.col-md-12
+          div.fb-main
+      
+    nav.navbar.navbar-default.navbar-fixed-bottom.footer
+      div.container
+        p
+          b Created by Kayla Martell
+          br
+          a Built On Bluemix
+          img.small-logo(src='/images/Bluemix.png')
+          a Powered By Cloudant
+          img.small-logo(src='/images/cloudant_logo.png')
+
+
+                    
+
+                      
+                        
+
+
+
+
+
+  
+
+    
+ 

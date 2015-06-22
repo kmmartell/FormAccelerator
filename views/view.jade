@@ -1,0 +1,43 @@
+doctype html
+h1.form-title!=name
+p!=description
+hr
+form.form(id='form_'+form_id)
+	div.save-buttons
+		
+
+		input.btn.return(type='button', value='Return to Main View', onclick='cancel()')
+	each val in fields
+		if val.field_type == "text"
+			div.form-group(class=val["generated"]== "true" ? "hidden": "")
+				p
+					label.!= val["label"]+': '
+					span!= record[val.cid]
+		
+				
+		else if val.field_type == "dropdown"
+			div.form-group(class=val["generated"]== "true" ? "hidden": "")
+				label.!= val["label"]
+				select.form-control(id!=val.cid, name!=val.cid)
+					if val.field_options.include_blank_option == "true"
+						option(value='', selected=record[val.cid] || !record["_id"] ? "selected" :false) Choose...
+					each option in val.field_options.options
+						option(value!=val.label, selected=record[val.cid] ? "selected" :false)!=option.label
+		else if val.field_type == "radio"
+			div.form-group(class=val["generated"]== "true" ? "hidden": "")
+				label.form-control!= val.label
+					each option in val.field_options.options
+						div.radio
+							label
+								input(type='radio', name!=val.cid, checked=record[val.cid] ? "selected" :false)
+								!= option.label
+		else if val.field_type == "checkbox"
+			if val.field_options
+				each option in val.field_options.options
+					div.checkbox
+						label
+							input(type='checkbox', value!=option.label name!=val.cid)
+	div.save-buttons
+		
+		input.btn.return(type='button', value='Return to Main View', onclick='cancel()')
+					

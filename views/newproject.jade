@@ -1,0 +1,51 @@
+doctype html
+html(lang="en")
+	head
+		title Create Project
+		link(rel='stylesheet', href='/plugins/bootstrap/css/bootstrap.min.css', type='text/css')
+		link(rel='stylesheet', href='/plugins/datatables/media/css/jquery.dataTables.css', type='text/css')
+		link(rel='stylesheet', href='/plugins/sweetalert/lib/sweet-alert.css', type='text/css')
+		link(rel='stylesheet', href='/css/style.css', type='text/css')
+
+		each s in scripts
+			script(src=s)
+
+	body
+		div#w3-header
+			div.banner
+				a(href='https://github.com/TravellersFeet/FormAccelerator') 
+					img(src='images/github.png')
+		div.container(style={'margin-top':'20px'})
+			div.row
+				div.col-md-2
+				div.col-md-8(style={'text-align':'center'})
+					img(src='/images/bluemixbanner.png', style={'height':'100px', 'align':'center', 'margin-left':'auto', 'margin-right':'auto'})
+					div.center-form.form
+						div#form_new_project.form-group
+							
+							
+							input.form-control(name='project_name', id='project_name', placeholder='Name of New Project', style={'text-align':'center'})
+							span.help-block The name of the project will also be the name of the web site that hosts your forms.
+
+						button.btn.btn-primary.save(onclick='save("", "new_project", "", "project")', style={'margin-top':'20px'}) Create Project
+						br
+						a.subtext(href='/allprojects')
+							span.glyphicon.glyphicon-home 
+							span(style={'margin-left':'5px'}) View all projects
+
+
+				div.col-md-2
+
+	nav.navbar.navbar-default.navbar-fixed-bottom.footer
+		div.container
+			p
+				b The Form Accelerator : Created by Kayla Martell
+				br
+				a Built On Bluemix
+				img.small-logo(src='/images/Bluemix.png')
+				a Powered By Cloudant
+				img.small-logo(src='/images/cloudant_logo.png')
+
+
+
+

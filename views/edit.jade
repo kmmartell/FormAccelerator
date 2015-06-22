@@ -1,0 +1,51 @@
+doctype html
+h1.form-title!=name
+p!=description
+hr
+form.form(id='form_'+form_id)
+	div.save-buttons
+		input.btn.btn-primary.save(type='button', value='Save', onclick='save("'+project_id+'", "'+form_id+'", "'+record_id+'")')
+
+		input.btn.cancel(type='button', value='Cancel', onclick='cancel()')
+	
+	each val, i in fields
+		div.col-md-6
+			if val.field_type == "text"
+				div.form-group(class=val["generated"]== "true" ? "hidden": "")
+					label.!= val["label"]
+					input.form-control(id!=val.cid, class=val.required==true  ? "required" : "", name!=val.cid, value=record[val.cid] ? record[val.cid] :"")
+			else if val.field_type == "paragraph"
+				div.form-group(class=val["generated"]== "true" ? "hidden": "")
+					label
+						span!= val["label"]
+						span.required-label.glyphicon.glyphicon-asterisk
+					textarea.form-control(id!=val.cid, class=val.required==true  ? "required" : "", name!=val.cid, value=record[val.cid] ? record[val.cid] :"")
+			
+					
+			else if val.field_type == "dropdown"
+				div.form-group(class=val["generated"]== "true" ? "hidden": "")
+					label.!= val["label"]
+					select.form-control(id!=val.cid,class=val.required==true  ? "required" : "",  name!=val.cid)
+						if val.field_options.include_blank_option == "true"
+							option(value='', selected=record[val.cid] || !record["_id"] ? "selected" :false) Choose...
+						each option in val.field_options.options
+							option(value!=val.label, selected=record[val.cid] ? "selected" :false)!=option.label
+			else if val.field_type == "radio"
+				div.form-group(class=val["generated"]== "true" ? "hidden": "")
+					label.form-control!= val.label
+						each option in val.field_options.options
+							div.radio
+								label
+									input(type='radio', class=val.required==true  ? "required" : "", name!=val.cid, checked=record[val.cid] ? "selected" :false)
+									!= option.label
+			else if val.field_type == "checkbox"
+				if val.field_options
+					each option in val.field_options.options
+						div.checkbox
+							label
+								input(type='checkbox',class=val.required==true  ? "required" : "",  value!=option.label name!=val.cid)
+	hr
+	div.save-buttons
+		input.btn.btn-primary.save(type='button', value='Save', onclick='save("'+project_id+'", "'+form_id+'", "'+record_id+'")')
+		input.btn.cancel(type='button', value='Cancel', onclick='cancel()')
+					

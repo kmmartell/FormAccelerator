@@ -1,0 +1,36 @@
+doctype html
+h1.form-title!=name
+p!=description
+hr
+div.form
+	each val in fields
+		if val.field_type == "text"
+			div.form-group
+				label.!= val["label"]
+				input.form-control(id!=val.cid, name!=val.cid)
+				
+		else if val.field_type == "dropdown"
+			div.form-group
+				label.!= val["label"]
+				select.form-control(id!=val.cid, name!=val.cid)
+					if val.field_options.include_blank_option == "true"
+						option Choose...
+					each option in val.field_options.options
+						option!=option.label
+		else if val.field_type == "radio"
+			div.form-group
+				label.form-control!= val.label
+					each option in val.field_options.options
+						div.radio
+							label
+								input(type='radio', name!=val.cid)
+								!= option.label
+		else if val.field_type == "checkbox"
+			if val.field_options
+				each option in val.field_options.options
+					div.checkbox
+						label
+							input(type='checkbox', value!=option.label name!=val.cid)
+
+	input.btn.btn-primary(type='button', value='Save')
+					

@@ -1,0 +1,36 @@
+
+
+<html>
+	
+
+
+<head>
+	<script  src="plugins/jquery/jquery.min.js"></script>
+    <script src="js/formgenerator.js"></script>
+	<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/formgeneartor.css">
+</head>
+
+<script>
+	$(function(){
+			$("#form").formgenerator({
+				"ajax":"https://kmartell:sherbertlemon12@kmartell.cloudant.com/acceleration/formA"
+			});
+
+
+});
+
+</script>
+
+	</head>
+<body>
+<h1>Form Generator</h1>
+
+
+<div id="form" class="container">
+
+
+	</div>
+</body>
+
+</html>

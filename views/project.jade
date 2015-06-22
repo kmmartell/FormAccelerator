@@ -1,0 +1,145 @@
+
+html
+  head
+
+    title= pageTitle
+  
+    
+    each s in scripts
+      script(src=s)
+
+    
+
+    // Import the stylesheets
+    each l in links
+      link(href=l)
+    link(rel='stylesheet', href='/plugins/bootstrap/css/bootstrap.min.css', type='text/css')
+    link(rel='stylesheet', href='/plugins/datatables/media/css/jquery.dataTables.css', type='text/css')
+    link(rel='stylesheet', href='/plugins/sweetalert/lib/sweet-alert.css', type='text/css')
+    link(rel='stylesheet', href='/css/style.css', type='text/css')
+
+  body
+    // Create body header
+    div#w3-header
+      div.banner
+        a(href='https://github.com/TravellersFeet/FormAccelerator') 
+          img(src='images/github.png')
+          
+    nav#navbar-top.navbar.navbar-default
+      div.container-fluid
+        div.navbar-header
+          a.navbar-brand!=pageTitle
+        div#navbar.navbar-collapse.collapse
+          ul.nav.navbar-nav.navbar-left
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/allprojects') Home
+            li.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown', role='button' aria-expanded='false') Options
+                span.glyphicon.glyphicon-cog
+                span.caret
+                ul.dropdown-menu(role='menu')
+                  li
+                    a(href='/create/project/') Build Your Own App
+                  li
+                    a(href='/dashboard/' + project_id) Edit this Application
+            li
+              a Help
+
+    div#page.container-fluid
+      div#tables.row
+        div.col-md-3
+          a.thumbnail(href='#')
+            img(src='images/Bluemix.png')
+          div#accordion.panel-group(role='tablist', aria-multiselectable='true')
+            div.panel.panel-default
+              div#heading1.panel-heading(role='tab')
+                h4.panel-title Filters
+                  a(data-toggle='collapse', data-parent='#accordion', href='#collapse1', aria-expanded='true', aria-controls='collapse1')
+              div#collapse1.panel-collapse.collapse.in(role='tabpanel', aria-labelledby='heading1')
+                div#filters.panel-body
+                  p Geography breakdown
+            div.panel.panel-default
+              div#heading2.panel-heading(role='tab')
+                h4.panel-title Help
+                  a.collapsed(data-toggle='collapse', data-parent='#accordion', href='#collapse2', aria-expanded='false', aria-controls='collapse2')
+              div#collapse2.panel-collapse.collapse(role='tabpanel', aria-labelledby='heading2')
+                div.panel-body
+                  p Coming Soon
+
+        div.col-md-9
+       
+          div
+            div.row
+              div#navbar-sub.navbar-collapse.collapse
+                ul.nav.navbar-nav.navbar-left
+                  ol.breadcrumb
+                    li 
+                      a(href='home') Home
+                    li!= pageTitle
+                ul#sub-nav.nav.navbar-nav.navbar-right
+                  if forms_list.length>=2
+                    li
+                      a.dropdown-toggle(data-toggle='dropdown', href='#', role='button', aria-expanded='false') New
+                        span.glyphicon.glyphicon-plus
+                        span.caret
+                      ul.dropdown-menu(role='menu')
+                        each form, index in forms_list
+                          li
+                            a(onclick='createRecord("'+project_id +'", "'+form+'")')
+                              span.glyphicon.glyphicon-plus
+                              span!= ' New '+form
+                  else
+                    li
+                      a(onclick='createRecord("'+project_id +'", "'+forms_list[0]+'")')
+                        span.glyphicon.glyphicon-plus
+                        span!= ' New '+forms_list[0]
+                   
+
+                  li.disabled(disabled='disabled')
+                    a 
+                      span.glyphicon.glyphicon-cloud-upload
+                      span  Import
+
+              div#document-tabs
+                ul#document-list.nav.nav-tabs(role='tablist')
+                  each tab, index in forms_list
+                    if index==0
+                      li.active(role='presentation', )
+                        a(href!=tab, aria-controls!=tab, role='tab', data-toggle='tab')!=tab
+                    else
+                      li(role='presentation')
+                        a(href!=tab, aria-controls!=tab, role='tab', data-toggle='tab')!=tab
+              div#document-tables
+                 each tab, index in forms_list
+                    div.container_table(id='container_table_'+tab, width='100%')
+                      table.table-main(id='table_'+tab, style='{width, 100%}')
+      div#document-forms.row
+        div.col-md-2
+        div.col-md-8
+          div#doc-form
+        div.col-md-2
+    nav.navbar.navbar-default.navbar-fixed-bottom.footer
+      div.container
+        p
+          b Created by Kayla Martell
+          br
+          a Built On Bluemix
+          img.small-logo(src='images/Bluemix.png')
+          a Powered By Cloudant
+          img.small-logo(src='images/cloudant_logo.png')
+
+
+                    
+
+                      
+                        
+
+
+
+
+
+  
+
+    
+ 
