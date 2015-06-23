@@ -1,8 +1,8 @@
 applications:
 - disk_quota: 1024M
-  host: formaccelerator2
-  name: formaccelerator2
+  host: formaccelerator
+  name: formaccelerator
   path: .
-  domain: kmmartell.com
+  domain: mybluemix.net
   instances: 1
   memory: 256M

@@ -8,7 +8,7 @@ var cheerio = require('cheerio');
 var bodyParser   =    require("body-parser");
 var Promise = require('promise');
 var http = require("http");
-var nano = require('nano')('user:password@host');
+var nano = require('nano')('https://user:password@host');
 
 // create an alias for working with that database
 var db = nano.db.use('acceleration');
@@ -17,8 +17,8 @@ var db = nano.db.use('acceleration');
 var cfenv = require('cfenv');
 
 
-var Cloudant = require('cloudant')({account:"accountname", password:"accountpassword"});
-var cloud_db = Cloudant.db.use("acceleration");
+var Cloudant = require('cloudant')({account:"user", password:"password"});
+var cloud_db = Cloudant.db.use("db_name");
 
 
 // create a new express server
@@ -95,7 +95,7 @@ app.get("/table/records/:form_id", function(req, res){
            }
 
       column1+="</div>";
-           var temp={"main_header":column1};
+           var temp={"main_header":column1, "width":"600px", "id":"" "sorting":false};
            
            
 
